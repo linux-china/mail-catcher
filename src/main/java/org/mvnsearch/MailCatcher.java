@@ -38,7 +38,7 @@ public class MailCatcher {
         Server server = new Server(8080);
         ServletHandler handler = new ServletHandler();
         server.setHandler(handler);
-        handler.addServletWithMapping(WebjarsServlet.class, "/webjars");
+        handler.addServletWithMapping(WebjarsServlet.class, "/webjars/*");
         server.start();
         server.join();
     }

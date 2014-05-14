@@ -7,7 +7,11 @@ import org.apache.velocity.app.Velocity;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
+import org.mvnsearch.MailCatcher;
+import org.subethamail.wiser.WiserMessage;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.StringWriter;
-import java.util.Map;
 
 /**
  * webmail servlet
@@ -57,6 +60,15 @@ public class WebMailServlet extends HttpServlet {
     }
 
     public String portal(HttpServletRequest request, HttpServletResponse response, VelocityContext context) throws ServletException, IOException {
+        for (WiserMessage message : MailCatcher.wiser.getMessages()) {
+            String envelopeSender = message.getEnvelopeSender();
+            String envelopeReceiver = message.getEnvelopeReceiver();
+            try {
+                MimeMessage mimeMessage = message.getMimeMessage();
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            }
+        }
         return "portal.vm";
     }
 
@@ -65,4 +77,5 @@ public class WebMailServlet extends HttpServlet {
         ve.getTemplate(template).merge(context, sw);
         return sw.toString();
     }
+
 }

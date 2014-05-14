@@ -3,6 +3,7 @@ package org.mvnsearch;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHandler;
 import org.mvnsearch.mail.catcher.MessageHandlerImpl;
+import org.mvnsearch.mail.catcher.web.servlet.WebMailServlet;
 import org.mvnsearch.mail.catcher.web.servlet.WebjarsServlet;
 import org.subethamail.smtp.MessageContext;
 import org.subethamail.smtp.MessageHandler;
@@ -39,6 +40,7 @@ public class MailCatcher {
         ServletHandler handler = new ServletHandler();
         server.setHandler(handler);
         handler.addServletWithMapping(WebjarsServlet.class, "/webjars/*");
+        handler.addServletWithMapping(WebMailServlet.class, "*.html");
         server.start();
         server.join();
     }

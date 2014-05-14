@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="container">
-    Welcome
+    $content
 </div>
 </body>
 </html>

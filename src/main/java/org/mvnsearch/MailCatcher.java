@@ -9,6 +9,7 @@ import org.subethamail.smtp.MessageContext;
 import org.subethamail.smtp.MessageHandler;
 import org.subethamail.smtp.MessageHandlerFactory;
 import org.subethamail.smtp.server.SMTPServer;
+import org.subethamail.wiser.Wiser;
 
 /**
  * mail catcher
@@ -16,6 +17,8 @@ import org.subethamail.smtp.server.SMTPServer;
  * @author linux_china
  */
 public class MailCatcher {
+    public static Wiser wiser;
+
     public static void main(String[] args) throws Exception {
         System.out.println("Starting mail server");
         startSmtpServer();
@@ -25,14 +28,10 @@ public class MailCatcher {
     }
 
     public static void startSmtpServer() {
-        SMTPServer smtpServer = new SMTPServer(new MessageHandlerFactory() {
-            public MessageHandler create(MessageContext messageContext) {
-                return new MessageHandlerImpl(messageContext);
-            }
-        });
-        smtpServer.setHostName("Mail Catcher");
-        smtpServer.setPort(1025);
-        smtpServer.start();
+        wiser = new Wiser();
+        wiser.setHostname("Mail Catcher");
+        wiser.setPort(1025); // Default is 25
+        wiser.start();
     }
 
     public static void startWebServer() throws Exception {

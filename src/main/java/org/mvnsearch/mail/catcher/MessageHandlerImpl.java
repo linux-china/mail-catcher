@@ -9,6 +9,8 @@ import org.subethamail.smtp.TooMuchDataException;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Message Handler
@@ -16,19 +18,21 @@ import java.io.InputStream;
  * @author linux_china
  */
 public class MessageHandlerImpl implements MessageHandler {
-    private Logger log = LoggerFactory.getLogger(MessageHandlerImpl.class);
-    MessageContext context;
+    private static Logger log = LoggerFactory.getLogger(MessageHandlerImpl.class);
+    private MessageContext context;
+    private String from;
+    private List<String> recipients = new ArrayList<>();
 
     public MessageHandlerImpl(MessageContext context) {
         this.context = context;
     }
 
-    public void from(String s) throws RejectException {
-
+    public void from(String from) throws RejectException {
+        this.from = from;
     }
 
-    public void recipient(String s) throws RejectException {
-
+    public void recipient(String recipient) throws RejectException {
+        this.recipients.add(recipient);
     }
 
     public void data(InputStream inputStream) throws RejectException, TooMuchDataException, IOException {

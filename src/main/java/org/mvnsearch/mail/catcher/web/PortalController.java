@@ -3,7 +3,6 @@ package org.mvnsearch.mail.catcher.web;
 
 import org.apache.commons.mail.Email;
 import org.apache.commons.mail.SimpleEmail;
-import org.mvnsearch.mail.catcher.infrastructure.EncodingUtils;
 import org.mvnsearch.mail.catcher.infrastructure.WiserServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,13 +20,11 @@ import org.subethamail.wiser.WiserMessage;
 public class PortalController {
     @Autowired
     private WiserServer wiserServer;
-    private EncodingUtils encodingUtils = new EncodingUtils();
 
     @RequestMapping("/")
     public ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView("index");
         modelAndView.addObject("allEmails", wiserServer.getMessages());
-        modelAndView.addObject("encodingUtils", encodingUtils);
         return modelAndView;
     }
 

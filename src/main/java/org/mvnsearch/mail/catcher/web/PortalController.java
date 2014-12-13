@@ -32,22 +32,15 @@ public class PortalController {
 
     @RequestMapping("/delete")
     public ModelAndView delete(@RequestParam("id") String msgId) {
-        List<WiserMessage> messages = wiserServer.getMessages();
-        WiserMessage deletedMsg = null;
-        for (WiserMessage message : messages) {
-            try {
-                if (message.getMimeMessage().getMessageID().equals(msgId)) {
-                    deletedMsg = message;
-                    break;
-                }
-            } catch (Exception ignore) {
-
-            }
-        }
-        if (deletedMsg != null) {
-            messages.remove(deletedMsg);
-        }
+        wiserServer.removeMessage(msgId);
         return new ModelAndView("redirect:/");
+    }
+
+    @RequestMapping("/show")
+    public ModelAndView show(@RequestParam("id") String msgId) {
+        ModelAndView modelAndView = new ModelAndView("index");
+        modelAndView.addObject("email", wiserServer.findMsgById(msgId));
+        return modelAndView;
     }
 
     @RequestMapping("/tools")

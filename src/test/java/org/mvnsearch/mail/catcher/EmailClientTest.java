@@ -4,6 +4,7 @@ import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.Email;
 import org.apache.commons.mail.SimpleEmail;
 import org.junit.Test;
+import org.springframework.mail.javamail.MimeMessageHelper;
 
 /**
  * email client test
@@ -15,10 +16,11 @@ public class EmailClientTest {
     @Test
     public void testSendPlainEmail() throws Exception {
         Email email = constructEmail();
-        email.setFrom("user@gmail.com");
-        email.setSubject("TestMail");
-        email.setMsg("This is a test mail ... :-)");
-        email.addTo("foo@bar.com");
+        email.setFrom("sender@gmail.com");
+        email.setSubject("邮件标题");
+        email.setMsg("邮件主体");
+        email.addTo("receiver@bar.com");
+        email.setCharset("UTF-8");
         email.send();
     }
 

@@ -39,4 +39,24 @@ public class WiserServerImpl implements WiserServer {
     public List<WiserMessage> getMessages() {
         return wiser.getMessages();
     }
+
+    /**
+     * find message by id
+     *
+     * @param id message id
+     * @return wiser message
+     */
+    public WiserMessage findMsgById(String id) {
+        List<WiserMessage> messages = getMessages();
+        for (WiserMessage message : messages) {
+            try {
+                if (message.getMimeMessage().getMessageID().equals(id)) {
+                    return message;
+                }
+            } catch (Exception ignore) {
+
+            }
+        }
+        return null;
+    }
 }

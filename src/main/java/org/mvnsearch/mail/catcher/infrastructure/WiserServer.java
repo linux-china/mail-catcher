@@ -28,4 +28,12 @@ public interface WiserServer {
      * @return message list
      */
     public List<WiserMessage> getMessages();
+
+    /**
+     * find message by id
+     *
+     * @param id message id
+     * @return wiser message
+     */
+    public WiserMessage findMsgById(String id);
 }

@@ -22,7 +22,7 @@ public class WiserServerImpl implements WiserServer {
     public void start() {
         wiser = new Wiser();
         wiser.setHostname("MailCatcher");
-        wiser.setPort(1025); // Default is 25
+        wiser.setPort(LISTEN_PORT);
         wiser.start();
     }
 

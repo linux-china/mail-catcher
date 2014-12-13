@@ -36,4 +36,11 @@ public interface WiserServer {
      * @return wiser message
      */
     public WiserMessage findMsgById(String id);
+
+    /**
+     * remove message
+     *
+     * @param id message id
+     */
+    public void removeMessage(String id);
 }

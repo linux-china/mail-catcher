@@ -59,4 +59,16 @@ public class WiserServerImpl implements WiserServer {
         }
         return null;
     }
+
+    /**
+     * remove message
+     *
+     * @param id message id
+     */
+    public void removeMessage(String id) {
+        WiserMessage msg = findMsgById(id);
+        if (msg != null) {
+            getMessages().remove(msg);
+        }
+    }
 }

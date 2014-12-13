@@ -10,6 +10,8 @@ import java.util.List;
  * @author linux_china
  */
 public interface WiserServer {
+    public int LISTEN_PORT = 1025;
+
     /**
      * start subethamail wiser server
      */

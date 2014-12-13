@@ -12,7 +12,7 @@
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Mail Catcher</a>
+                    <a class="navbar-brand" href="/">Mail Catcher</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -28,9 +28,7 @@
                         <button type="submit" class="btn btn-default">Search</button>
                     </form>
                 </div>
-                <!-- /.navbar-collapse -->
             </div>
-            <!-- /.container-fluid -->
         </nav>
     </div>
     <div class="row">
@@ -50,10 +48,10 @@
             #* @vtlvariable name="allEmails" type="java.util.List<org.subethamail.wiser.WiserMessage>" *#
                 #foreach($email in $allEmails)
                 <tr>
-                    <td>$email.mimeMessage.messageNumber</td>
+                    <td><a href="/show?id=${email.mimeMessage.messageID}">$email.mimeMessage.messageNumber</a></td>
                     <td>$email.envelopeSender</td>
                     <td>$email.envelopeReceiver</td>
-                    <td>$email.mimeMessage.subject</td>
+                    <td><a href="/show?id=${email.mimeMessage.messageID}">$email.mimeMessage.subject</a></td>
                     <td>$email.mimeMessage.sentDate</td>
                     <td><a class="btn btn-danger" href="/delete?id=${email.mimeMessage.messageID}">Delete</a></td>
                 </tr>

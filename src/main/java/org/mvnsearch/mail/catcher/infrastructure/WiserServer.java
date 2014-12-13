@@ -43,4 +43,9 @@ public interface WiserServer {
      * @param id message id
      */
     public void removeMessage(String id);
+
+    /**
+     * clear inbox
+     */
+    public void clear();
 }

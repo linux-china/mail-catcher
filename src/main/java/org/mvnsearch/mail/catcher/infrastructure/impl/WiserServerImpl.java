@@ -71,4 +71,11 @@ public class WiserServerImpl implements WiserServer {
             getMessages().remove(msg);
         }
     }
+
+    /**
+     * clear inbox
+     */
+    public void clear() {
+        getMessages().clear();
+    }
 }

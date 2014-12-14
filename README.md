@@ -1,8 +1,8 @@
 Mail Catcher
 ==============================
-Catch all mail and display on the web, and main aim for unit testing.
+MailCatcher runs a super simple SMTP server which catches any message sent to it to display in a web interface.
 
-### package
+### Spring Boot package
 
 mvn -DskipTests clean package sping-boot:repackage
 
@@ -11,8 +11,11 @@ mvn -DskipTests clean package sping-boot:repackage
 * docker build -t linuxchina/mail-catcher .
 * docker run -d -p 1080:1080 -p 1025:1024 linuxchina/mail-catcher
 
+### Assembly to distribution
+
+* mvn -DskipTests clean package assembly:assembly
+
 ### todo 
 
-* notify after received
-* email list page
-* email detail page
+* websocket support: notify after mail received
+* display email count on web

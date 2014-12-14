@@ -38,6 +38,7 @@
             <li>Sender: ${email.envelopeSender}</li>
             <li>Receiver: ${email.envelopeSender}</li>
             <li>Subject: $email.mimeMessage.subject</li>
+            <li>Sent Date: $email.mimeMessage.sentDate</li>
         </ul>
         <hr/>
         ${body}

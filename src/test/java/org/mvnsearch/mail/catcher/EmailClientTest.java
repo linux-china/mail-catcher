@@ -6,6 +6,8 @@ import org.apache.commons.mail.SimpleEmail;
 import org.junit.Test;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
+import javax.mail.internet.MimeMessage;
+
 /**
  * email client test
  *
@@ -22,6 +24,19 @@ public class EmailClientTest {
         email.addTo("receiver@bar.com");
         email.setCharset("UTF-8");
         email.send();
+    }
+
+    @Test
+    public void testGetMailBody() throws Exception {
+        Email email = constructEmail();
+        email.setFrom("sender@gmail.com");
+        email.setSubject("邮件标题");
+        email.setMsg("邮件主体");
+        email.addTo("receiver@bar.com");
+        email.setCharset("UTF-8");
+        email.send();
+        MimeMessage mifmeMessage = email.getMimeMessage();
+        System.out.println(mifmeMessage.getContentType());
     }
 
     public Email constructEmail() {

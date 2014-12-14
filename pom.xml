@@ -12,12 +12,28 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>mail-catcher</name>
-    <url>Catch all sent emails</url>
+    <url>Supply SMTP service to catch all sent emails during testing</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <developers>
+        <developer>
+            <id>linux_china</id>
+            <name>Jacky Chan</name>
+            <email>libing.chen@gmail.com</email>
+            <url>https://twitter.com/linux_china</url>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:git@github.com:linux-china/mail-catcher.git</connection>
+        <developerConnection>scm:git:git@github.com:linux-china/mail-catcher.git</developerConnection>
+        <url>https://github.com/linux-china/mail-catcher</url>
+    </scm>
     <build>
         <plugins>
             <plugin>

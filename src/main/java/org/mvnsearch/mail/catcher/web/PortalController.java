@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.subethamail.wiser.WiserMessage;
 
+import javax.mail.BodyPart;
+import javax.mail.Multipart;
+import javax.mail.internet.MimeMessage;
+
 /**
  * portal controller
  *
@@ -39,6 +43,11 @@ public class PortalController {
         ModelAndView modelAndView = new ModelAndView("email");
         WiserMessage email = wiserServer.findMsgById(msgId);
         modelAndView.addObject("email", email);
+        try {
+            modelAndView.addObject("body", getEmailTextContent(email.getMimeMessage()));
+        } catch (Exception ignore) {
+
+        }
         return modelAndView;
     }
 
@@ -75,6 +84,30 @@ public class PortalController {
         email.setHostName("127.0.0.1");
         email.setSmtpPort(1025);
         return email;
+    }
+
+    /**
+     * get email text content
+     *
+     * @param mimeMessage mime message
+     * @return text body
+     * @throws Exception exception
+     */
+    public String getEmailTextContent(MimeMessage mimeMessage) throws Exception {
+        Object body = mimeMessage.getContent();
+        if (body instanceof Multipart) {
+            Multipart multipart = (Multipart) body;
+            for (int i = 0; i < multipart.getCount(); i++) {
+                BodyPart part = multipart.getBodyPart(i);
+                if (part.getContentType().startsWith("text/")) {
+                    return part.getContent().toString();
+                }
+            }
+        } else { // ordinary message
+            return body.toString();
+        }
+        return null;
+
     }
 
 

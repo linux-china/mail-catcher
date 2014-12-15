@@ -19,3 +19,6 @@ mvn -DskipTests clean package sping-boot:repackage
 
 * websocket support: notify after mail received
 * display email count on web
+* Email detail: cc, bcc, attachment added
+* HTTP REST API
+* Pop3 or IMAP support

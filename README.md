@@ -22,3 +22,4 @@ mvn -DskipTests clean package sping-boot:repackage
 * Email detail: cc, bcc, attachment added
 * HTTP REST API
 * Pop3 or IMAP support
+* Extract pop3 server from https://code.google.com/p/jemailserver/  http://sourceforge.net/projects/javaemailserver/files/JES%202/

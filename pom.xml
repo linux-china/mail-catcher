@@ -119,6 +119,11 @@
             <version>3.3.1</version>
         </dependency>
         <dependency>
+            <groupId>org.sitemesh</groupId>
+            <artifactId>sitemesh</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity</artifactId>
         </dependency>
@@ -138,7 +143,7 @@
             <dependency>
                 <groupId>io.spring.platform</groupId>
                 <artifactId>platform-bom</artifactId>
-                <version>1.1.0</version>
+                <version>1.1.0.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

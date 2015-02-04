@@ -11,6 +11,14 @@ mvn -DskipTests clean package sping-boot:repackage
 * docker build -t linuxchina/mail-catcher .
 * docker run -d -p 1080:1080 -p 1025:1025 linuxchina/mail-catcher
 
+### fig configuration
+
+    mailcatcher:
+        image: linuxchina/mail-catcher
+        ports:
+           - "1080:1080"
+           - "1025:1025"
+
 ### Assembly to distribution
 
 * mvn -DskipTests clean package assembly:assembly

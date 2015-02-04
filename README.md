@@ -9,7 +9,7 @@ mvn -DskipTests clean package sping-boot:repackage
 ### Docker Builder
 
 * docker build -t linuxchina/mail-catcher .
-* docker run -d -p 1080:1080 -p 1025:1024 linuxchina/mail-catcher
+* docker run -d -p 1080:1080 -p 1025:1025 linuxchina/mail-catcher
 
 ### Assembly to distribution
 
@@ -17,8 +17,8 @@ mvn -DskipTests clean package sping-boot:repackage
 
 ### todo 
 
-* websocket support: notify after mail received
-* display email count on web
+* WebSocket support: notify after mail received
+* Display email count on web
 * Email detail: cc, bcc, attachment added
 * HTTP REST API
 * Pop3 or IMAP support

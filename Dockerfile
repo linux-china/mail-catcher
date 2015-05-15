@@ -1,4 +1,4 @@
-FROM dockerfile/java:oracle-java8
+FROM java:8-jdk
 MAINTAINER linux_china linux_china@hotmail.com
 
 ADD target/mail-catcher-1.0.0-SNAPSHOT.jar /opt/mail-catcher-1.0.0-SNAPSHOT.jar

@@ -4,6 +4,7 @@ import org.sitemesh.builder.SiteMeshFilterBuilder;
 import org.sitemesh.config.ConfigurableSiteMeshFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -14,8 +15,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import javax.servlet.DispatcherType;
 import java.util.EnumSet;
 
-@EnableAutoConfiguration
-@ComponentScan
+@SpringBootApplication
 public class Application {
 
     public static void main(String[] args) {

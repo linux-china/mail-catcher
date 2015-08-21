@@ -2,6 +2,11 @@ Mail Catcher
 ==============================
 MailCatcher runs a super simple SMTP server which catches any message sent to it to display in a web interface.
 
+### Features
+
+* SMTP Server
+* SendGrid API
+
 ### Spring Boot package
 
 mvn -DskipTests clean package sping-boot:repackage
@@ -31,3 +36,12 @@ mvn -DskipTests clean package sping-boot:repackage
 * HTTP REST API
 * Pop3 or IMAP support
 * Extract pop3 server from https://code.google.com/p/jemailserver/  http://sourceforge.net/projects/javaemailserver/files/JES%202/
+
+
+### send grid api
+
+curl -X POST http://localhost:1080/api/mail.send.json \
+     -d "to=test@sendgrid.com" \
+     -d "from=you@youraddress.com" \
+     -d "subject=Sending with SendGrid is Fun" \
+     -d "html=and easy to do anywhere, even with CURL"

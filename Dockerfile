@@ -1,4 +1,4 @@
-FROM java:8u66-jdk
+FROM java:8u77-jdk-alpine
 MAINTAINER linux_china linux_china@hotmail.com
 
 ADD target/mail-catcher-1.0.0-SNAPSHOT.jar /opt/mail-catcher-1.0.0-SNAPSHOT.jar

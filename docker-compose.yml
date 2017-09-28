@@ -1,5 +1,7 @@
-mailcatcher:
-    image: linuxchina/mail-catcher
-    ports:
-       - "1080:1080"
-       - "1025:1025"
+version: "3"
+services:
+  mailcatcher:
+      image: linuxchina/mail-catcher
+      ports:
+         - "1080:1080"
+         - "1025:1025"

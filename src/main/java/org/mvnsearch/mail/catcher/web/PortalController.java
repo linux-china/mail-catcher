@@ -5,6 +5,7 @@ import org.apache.commons.mail.Email;
 import org.apache.commons.mail.SimpleEmail;
 import org.mvnsearch.mail.catcher.infrastructure.WiserServer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +21,7 @@ import javax.mail.internet.MimeMessage;
  *
  * @author linux_china
  */
-@RestController
+@Controller
 public class PortalController {
     @Autowired
     private WiserServer wiserServer;

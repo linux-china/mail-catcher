@@ -1,7 +1,9 @@
 <!doctype html>
-<html lang="en-US">
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Mail Catcher</title>
+    <link class="style" rel="stylesheet" href="/webjars/bootstrap/3.3.1/css/bootstrap.min.css"/>
 </head>
 <body>
 <div class="container">
@@ -29,17 +31,17 @@
             </div>
         </nav>
     </div>
-    #* @vtlvariable name="email" type="org.subethamail.wiser.WiserMessage" *#
+    <!--/*@thymesVar id="email" type="org.subethamail.wiser.WiserMessage"*/-->
     <div class="row">
         <h3>Email Detail</h3>
         <ul>
-            <li>Sender: ${email.envelopeSender}</li>
-            <li>Receiver: ${email.envelopeSender}</li>
-            <li>Subject: $email.mimeMessage.subject</li>
-            <li>Sent Date: $email.mimeMessage.sentDate</li>
+            <li>Sender: <span th:text="${email.envelopeSender}"></span></li>
+            <li>Receiver: <span th:text="${email.envelopeSender}"></span></li>
+            <li>Subject: <span th:text="${email.mimeMessage.subject}"></span></li>
+            <li>Sent Date: <span th:text="${email.mimeMessage.sentDate}"></span></li>
         </ul>
         <hr/>
-        ${body}
+        <p th:text="${body}"></p>
     </div>
 </div>
 </body>

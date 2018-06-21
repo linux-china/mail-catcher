@@ -22,14 +22,15 @@
         <tbody>
         <!--/*@thymesVar id="allEmails" type="java.util.List<org.subethamail.wiser.WiserMessage>"*/-->
         <tr th:each="email,iter : ${allEmails}">
-            <td><a href="/show?id=${email.mimeMessage.messageID}" th:text="${email.mimeMessage.messageNumber}">1</a>
+            <td><a th:href="${'/show?id='+email.mimeMessage.messageID}"
+                   th:text="${email.mimeMessage.messageNumber+1}">1</a>
             </td>
             <td th:text="${email.envelopeSender}"></td>
             <td th:text="${email.envelopeReceiver}"></td>
             <td><a th:href="${'/show?id='+email.mimeMessage.messageID}" th:text="${email.mimeMessage.subject}"></a>
             </td>
             <td th:text="${email.mimeMessage.sentDate}"></td>
-            <td><a class="btn btn-danger" href="/delete?id=${email.mimeMessage.messageID}">Delete</a></td>
+            <td><a class="btn btn-danger" th:href="${'/delete?id='+email.mimeMessage.messageID}">Delete</a></td>
         </tr>
         </tbody>
     </table>

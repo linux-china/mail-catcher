@@ -1,48 +1,21 @@
 <!doctype html>
-<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org" data-layout-decorate="~{layout.html}">
 <head>
     <meta charset="UTF-8">
     <title>Mail Catcher</title>
-    <link class="style" rel="stylesheet" href="/webjars/bootstrap/3.3.1/css/bootstrap.min.css"/>
 </head>
-<body>
-<div class="container">
-    <div class="row">
-        <nav class="navbar navbar-default" role="navigation">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="/">Mail Catcher</a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Inbox</a></li>
-                        <li><a href="/tools">Tools</a></li>
-                    </ul>
-                    <form class="navbar-form navbar-right" role="search">
-                        <div class="form-group">
-                            <input type="text" name="q" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-default">Search</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <!--/*@thymesVar id="email" type="org.subethamail.wiser.WiserMessage"*/-->
-    <div class="row">
-        <h3>Email Detail</h3>
-        <ul>
-            <li>Sender: <span th:text="${email.envelopeSender}"></span></li>
-            <li>Receiver: <span th:text="${email.envelopeSender}"></span></li>
-            <li>Subject: <span th:text="${email.mimeMessage.subject}"></span></li>
-            <li>Sent Date: <span th:text="${email.mimeMessage.sentDate}"></span></li>
-        </ul>
-        <hr/>
-        <p th:text="${body}"></p>
-    </div>
+<body data-layout-fragment="body">
+<!--/*@thymesVar id="email" type="org.subethamail.wiser.WiserMessage"*/-->
+<div class="row">
+    <h3>Email Detail</h3>
+    <ul>
+        <li>Sender: <span th:text="${email.envelopeSender}"></span></li>
+        <li>Receiver: <span th:text="${email.envelopeSender}"></span></li>
+        <li>Subject: <span th:text="${email.mimeMessage.subject}"></span></li>
+        <li>Sent Date: <span th:text="${email.mimeMessage.sentDate}"></span></li>
+    </ul>
+    <hr/>
+    <p th:text="${body}"></p>
 </div>
 </body>
 </html>

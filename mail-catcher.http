@@ -1,0 +1,40 @@
+# sendgrid v3 mail send
+POST http://localhost:1080/v3/mail/send
+Content-Type: application/json
+
+{
+  "personalizations": [
+    {
+      "to": [
+        {
+          "email": "test@example.com"
+        }
+      ]
+    }
+  ],
+  "from": {
+    "email": "test@example.com"
+  },
+  "subject": "Sending with SendGrid is Fun",
+  "content": [
+    {
+      "type": "text/plain",
+      "value": "and easy to do anywhere, even with cURL"
+    }
+  ]
+}
+
+### sendgrid v2 mail send
+POST http://localhost:1080/api/mail.send.json
+Content-Type: application/x-www-form-urlencoded
+
+from=test@example.com&to=test@example.com&subject=subject1&text=hello
+
+
+### sendcloud v2 mail send
+POST http://localhost:1080/apiv2/mail/send
+Content-Type: application/x-www-form-urlencoded
+
+from=test@example.com&to=test@example.com&subject=subject1&plain=hello
+
+###

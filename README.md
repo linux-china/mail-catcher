@@ -1,6 +1,6 @@
 Mail Catcher
 ============
-MailCatcher runs a super simple SMTP server and REST API which catch any outbound emails for unit test
+MailCatcher runs a super simple SMTP server and REST API which catch all outbound emails for unit test.
 
 # Features
 

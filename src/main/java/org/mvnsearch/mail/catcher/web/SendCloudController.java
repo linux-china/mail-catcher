@@ -19,7 +19,7 @@ import java.util.Map;
  * @author linux_china
  */
 @RestController
-public class SendCloudController {
+public class SendCloudController extends MailBaseController{
 
     @PostMapping("/apiv2/mail/send")
     public Map<String, Serializable> v2Send(
@@ -33,20 +33,7 @@ public class SendCloudController {
         result.put("result", true);
         result.put("statusCode", 200);
         try {
-            Email email;
-            if (!StringUtils.isEmpty(html)) {
-                HtmlEmail temp = new HtmlEmail();
-                temp.setHtmlMsg(html);
-                email = temp;
-            } else {
-                email = new SimpleEmail();
-                email.setMsg(plain);
-            }
-            email.setHostName("127.0.0.1");
-            email.setSmtpPort(WiserServer.LISTEN_PORT);
-            email.setFrom(from);
-            email.addTo(to);
-            email.setSubject(subject);
+            Email email = constructMail(from, to, subject, html, plain);
             email.send();
         } catch (Exception e) {
             result.put("result", false);

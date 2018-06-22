@@ -2,9 +2,8 @@ package org.mvnsearch.mail.catcher.web;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.mail.Email;
-import org.apache.commons.mail.SimpleEmail;
-import org.mvnsearch.mail.catcher.infrastructure.WiserServer;
 import org.mvnsearch.mail.catcher.web.sendgrid.Mail;
+import org.mvnsearch.mail.catcher.web.sendgrid.objects.Content;
 import org.mvnsearch.mail.catcher.web.sendgrid.objects.Personalization;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,24 +21,20 @@ import java.util.Map;
  * @author linux_china
  */
 @RestController
-public class SendGridController {
+public class SendGridController extends MailBaseController {
 
     @RequestMapping("/api/mail.send.json")
-    public Map<String, Serializable> send(@RequestParam("from") String from,
-                                          @RequestParam("to") String to,
-                                          @RequestParam("subject") String subject,
-                                          @RequestParam("html") String html
+    public Map<String, Serializable> send(
+            @RequestParam("from") String from,
+            @RequestParam("to") String to,
+            @RequestParam("subject") String subject,
+            @RequestParam(value = "html", required = false) String html,
+            @RequestParam(value = "html", required = false) String text
     ) {
         Map<String, Serializable> result = new HashMap<>();
         result.put("message", "success");
         try {
-            Email email = new SimpleEmail();
-            email.setHostName("127.0.0.1");
-            email.setSmtpPort(WiserServer.LISTEN_PORT);
-            email.setFrom(from);
-            email.addTo(to);
-            email.setSubject(subject);
-            email.setMsg(html);
+            Email email = constructMail(from, to, subject, html, text);
             email.send();
         } catch (Exception e) {
             result.put("message", "fail");
@@ -48,18 +43,24 @@ public class SendGridController {
     }
 
     @RequestMapping("/v3/mail/send")
-    public void v3Send(HttpServletResponse response, @RequestBody Mail mail) {
+    public void v3Send(HttpServletResponse response, @RequestBody Mail sendGridMail) {
         try {
-            Email email = new SimpleEmail();
-            email.setHostName("127.0.0.1");
-            email.setSmtpPort(WiserServer.LISTEN_PORT);
-            email.setFrom(mail.getFrom().getEmail());
-            for (Personalization personalization: mail.getPersonalization()) {
-                for (org.mvnsearch.mail.catcher.web.sendgrid.objects.Email to: personalization.getTos()) {
-                    email.addTo(to.getEmail());
+            for (Personalization personalization: sendGridMail.getPersonalization()) {
+                String to = null;
+                for (org.mvnsearch.mail.catcher.web.sendgrid.objects.Email mailTo: personalization.getTos()) {
+                    to = mailTo.getEmail();
                 }
-                email.setSubject(StringUtils.defaultIfBlank(personalization.getSubject(), mail.getSubject()));
-                email.setMsg(mail.getContent().get(0).getValue());
+                String from = sendGridMail.getFrom().getEmail();
+                String html = null;
+                String text = null;
+                Content content = sendGridMail.getContent().get(0);
+                if ("text/plain".equalsIgnoreCase(content.getType())) {
+                    text = content.getValue();
+                } else {
+                    html = content.getValue();
+                }
+                String subject = StringUtils.defaultIfBlank(personalization.getSubject(), sendGridMail.getSubject());
+                Email email = constructMail(from, to, subject, text, html);
                 email.send();
             }
         } catch (Exception e) {

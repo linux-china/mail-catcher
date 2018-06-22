@@ -7,7 +7,7 @@ MailCatcher runs a super simple SMTP server and REST API which catch any outboun
 * SMTP Server: SMTP port 1025
 * SendGrid API V2 & V3
 * SendCloud V2
-* Web user interface to check emails: http://localhost:1080
+* Web UI to check emails sent or not: http://localhost:1080
 * Docker image
 
 # Tech stack

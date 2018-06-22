@@ -1,47 +1,55 @@
 Mail Catcher
-==============================
-MailCatcher runs a super simple SMTP server which catches any message sent to it to display in a web interface.
+============
+MailCatcher runs a super simple SMTP server and REST API which catch any outbound emails for unit test
 
-### Features
+# Features
 
-* SMTP Server
-* SendGrid API
+* SMTP Server: SMTP port 1025
+* SendGrid API V2 & V3
+* SendCloud V2
+* Web user interface to check emails: http://localhost:1080
+* Docker image
 
-### Spring Boot package
+# Tech stack
 
-mvn -DskipTests clean package sping-boot:repackage
+* Spring Boot 2
+* Thymeleaf 3
+* Bootstrp 3
+* SubEtha SMTP https://github.com/voodoodyne/subethasmtp
+* Commons email & Javamail
 
-### Docker Builder
+# Docker support
 
-* docker build -t linuxchina/mail-catcher .
-* docker run -d -p 1080:1080 -p 1025:1025 linuxchina/mail-catcher
+* docker build
+```
+$ docker build -t linuxchina/mail-catcher .
+```
 
-### fig configuration
+* docker run
+```
+$ docker run -d -p 1080:1080 -p 1025:1025 linuxchina/mail-catcher
+```
 
-    mailcatcher:
-        image: linuxchina/mail-catcher
-        ports:
-           - "1080:1080"
-           - "1025:1025"
+* docker compose
+```yaml
+version: "3"
+services:
+  mailcatcher:
+      image: linuxchina/mail-catcher
+      ports:
+         - "1080:1080"
+         - "1025:1025"
+```
 
-### Assembly to distribution
+# Assembly to distribution
 
 * mvn -DskipTests clean package assembly:assembly
 
 ### todo 
 
-* WebSocket support: notify after mail received
-* Display email count on web
-* Email detail: cc, bcc, attachment added
-* HTTP REST API
-* Pop3 or IMAP support
-* Extract pop3 server from https://code.google.com/p/jemailserver/  http://sourceforge.net/projects/javaemailserver/files/JES%202/
+* Email quality check: SPF, DKIM
 
+# References
 
-### send grid api
-
-curl -X POST http://localhost:1080/api/mail.send.json \
-     -d "to=test@sendgrid.com" \
-     -d "from=you@youraddress.com" \
-     -d "subject=Sending with SendGrid is Fun" \
-     -d "html=and easy to do anywhere, even with CURL"
+* GreenMail: https://github.com/greenmail-mail-test/greenmail
+* Jib: https://github.com/GoogleContainerTools/jib

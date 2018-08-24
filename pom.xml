@@ -163,7 +163,7 @@
                     <plugin>
                         <groupId>com.google.cloud.tools</groupId>
                         <artifactId>jib-maven-plugin</artifactId>
-                        <version>0.9.0</version>
+                        <version>0.9.9</version>
                         <configuration>
                             <mainClass>${main.class}</mainClass>
                         </configuration>

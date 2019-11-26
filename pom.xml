@@ -5,10 +5,10 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.0.RELEASE</version>
+        <version>2.1.10.RELEASE</version>
     </parent>
     <prerequisites>
-        <maven>3.0</maven>
+        <maven>3.5</maven>
     </prerequisites>
     <groupId>org.mvnsearch</groupId>
     <artifactId>mail-catcher</artifactId>
@@ -42,7 +42,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -64,7 +64,7 @@
 
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.1.1</version>
                 <configuration>
                     <descriptors>
                         <descriptor>src/main/assembly/assembly.xml</descriptor>
@@ -109,7 +109,7 @@
         <dependency>
             <groupId>nz.net.ultraq.thymeleaf</groupId>
             <artifactId>thymeleaf-layout-dialect</artifactId>
-            <version>2.3.0</version>
+            <version>2.4.1</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -160,15 +160,19 @@
 
     <profiles>
         <profile>
-            <id>gke</id>
+            <id>jib</id>
             <build>
                 <plugins>
                     <plugin>
                         <groupId>com.google.cloud.tools</groupId>
                         <artifactId>jib-maven-plugin</artifactId>
-                        <version>0.10.0</version>
+                        <version>1.7.0</version>
                         <configuration>
+                            <to>
+                                <image>linuxchina/mail-catcher</image>
+                            </to>
                             <container>
+                                <useCurrentTimestamp>true</useCurrentTimestamp>
                                 <mainClass>${main.class}</mainClass>
                             </container>
                         </configuration>

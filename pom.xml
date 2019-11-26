@@ -166,7 +166,7 @@
                     <plugin>
                         <groupId>com.google.cloud.tools</groupId>
                         <artifactId>jib-maven-plugin</artifactId>
-                        <version>1.7.0</version>
+                        <version>1.8.0</version>
                         <configuration>
                             <to>
                                 <image>linuxchina/mail-catcher</image>
@@ -174,6 +174,10 @@
                             <container>
                                 <useCurrentTimestamp>true</useCurrentTimestamp>
                                 <mainClass>${main.class}</mainClass>
+                                <ports>
+                                    <port>1025</port>
+                                    <port>1080</port>
+                                </ports>
                             </container>
                         </configuration>
                     </plugin>

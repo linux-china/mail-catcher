@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.4.RELEASE</version>
+        <version>2.2.9.RELEASE</version>
     </parent>
     <prerequisites>
         <maven>3.5</maven>
@@ -136,6 +136,7 @@
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
@@ -166,7 +167,7 @@
                     <plugin>
                         <groupId>com.google.cloud.tools</groupId>
                         <artifactId>jib-maven-plugin</artifactId>
-                        <version>1.8.0</version>
+                        <version>2.5.0</version>
                         <configuration>
                             <to>
                                 <image>linuxchina/mail-catcher</image>

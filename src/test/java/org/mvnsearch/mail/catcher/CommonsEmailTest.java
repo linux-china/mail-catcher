@@ -14,7 +14,7 @@ public class CommonsEmailTest {
     @Test
     public void testSend() throws Exception {
         Email email = new SimpleEmail();
-        email.setHostName("192.168.99.100");
+        email.setHostName("127.0.0.1");
         email.setSmtpPort(1025);
         email.setFrom("user@gmail.com");
         email.setSubject("你好拿铁会!!!");

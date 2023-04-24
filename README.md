@@ -7,14 +7,16 @@ MailCatcher runs a super simple SMTP server and REST API which catch all outboun
 * SMTP Server: SMTP port 1025
 * SendGrid API V2 & V3
 * SendCloud V2
-* Web UI to check emails sent or not: http://localhost:1080
 * Docker image
+* Web UI to check emails sent or not: http://localhost:1080
+
+![Admin UI](admin-ui.png)
 
 # Tech stack
 
 * Spring Boot 2
 * Thymeleaf 3
-* Bootstrp 3
+* Bootstrap 3
 * SubEtha SMTP https://github.com/voodoodyne/subethasmtp
 * Commons email & Javamail
 
@@ -45,7 +47,7 @@ services:
 
 * mvn -DskipTests clean package assembly:assembly
 
-### todo 
+### todo
 
 * Email quality check: SPF, DKIM
 
@@ -55,3 +57,5 @@ services:
 * Jib: https://github.com/GoogleContainerTools/jib
 * maildev: SMTP Server + Web Interface for viewing and testing emails during development. https://github.com/maildev/maildev
 * JMail: A modern, fast, zero-dependency library for email address validation https://www.rohannagar.com/jmail/
+* Ethereal Email: Ethereal is a fake SMTP service for email sending test https://ethereal.email/
+* 10 Minutes email: https://temp-mail.org/en/10minutemail

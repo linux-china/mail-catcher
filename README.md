@@ -59,3 +59,4 @@ services:
 * JMail: A modern, fast, zero-dependency library for email address validation https://www.rohannagar.com/jmail/
 * Ethereal Email: Ethereal is a fake SMTP service for email sending test https://ethereal.email/
 * 10 Minutes email: https://temp-mail.org/en/10minutemail
+* Securing SubEtha SMTP connections with TLS: https://blog.trifork.com/2009/11/10/securing-connections-with-tls/

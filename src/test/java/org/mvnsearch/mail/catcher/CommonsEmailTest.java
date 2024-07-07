@@ -2,7 +2,7 @@ package org.mvnsearch.mail.catcher;
 
 import org.apache.commons.mail.Email;
 import org.apache.commons.mail.SimpleEmail;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * commons email test

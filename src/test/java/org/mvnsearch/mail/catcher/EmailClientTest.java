@@ -2,9 +2,9 @@ package org.mvnsearch.mail.catcher;
 
 import org.apache.commons.mail.Email;
 import org.apache.commons.mail.SimpleEmail;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.subethamail.wiser.Wiser;
 
 import javax.mail.internet.MimeMessage;
@@ -18,7 +18,7 @@ public class EmailClientTest {
     public static Wiser wiser;
     public static final int LISTEN_PORT = 10025;
 
-    @BeforeClass
+    @BeforeAll
     public static void setUp() {
         wiser = new Wiser();
         wiser.setHostname("MailCatcher");
@@ -26,7 +26,7 @@ public class EmailClientTest {
         wiser.start();
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDown() {
         wiser.stop();
     }
@@ -51,8 +51,8 @@ public class EmailClientTest {
         email.addTo("receiver@bar.com");
         email.setCharset("UTF-8");
         email.send();
-        MimeMessage mifmeMessage = email.getMimeMessage();
-        System.out.println(mifmeMessage.getContentType());
+        MimeMessage mimeMessage = email.getMimeMessage();
+        System.out.println(mimeMessage.getContentType());
     }
 
     public Email constructEmail() {
